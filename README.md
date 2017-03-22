@@ -1,4 +1,4 @@
-### [Feed Reader (Jasmine Testing)](https://jtabach.github.io/fend-feedreader/)
+## Feed Reader (Jasmine Testing)
 
 ### Getting Started
 
@@ -9,7 +9,3 @@
 ### Features
 
 - Jasmine Testing Feed Reader App
-
-### Give it a test run!
-
-[https://jtabach.github.io/fend-feedreader/](https://jtabach.github.io/fend-feedreader/)
