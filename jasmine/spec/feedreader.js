@@ -65,7 +65,7 @@ $(function() {
 
     // finds entries in feed and checks if there is at least 1 entry present
     it('loadFeed function is called and has at least one entry', function(done) {
-      var $feed = $('.feed')
+      var $feed = $('.feed');
       var $entries = $feed.find('.entry');
       var entriesLen = $entries.length;
       expect(entriesLen > 0).toBe(true);
@@ -94,7 +94,7 @@ $(function() {
 
     // checks to make sure the first entry of the first feed does not match the first entry of the second feed
     it('content changes on new feed', function(done) {
-      expect(firstFeedEntryText == secondFeedEntryText).toBe(false)
+      expect(firstFeedEntryText == secondFeedEntryText).toBe(false);
       done();
     });
   });
