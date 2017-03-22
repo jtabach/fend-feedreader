@@ -37,17 +37,14 @@ $(function() {
   describe('The menu', function() {
     var $body = $('body');
 
+    // checks if class menu-hidden is present on load/default
     it('is hidden by default', function() {
       expect($body.hasClass('menu-hidden')).toBe(true);
     });
 
-    /* TODO: Write a test that ensures the menu changes
-    * visibility when the menu icon is clicked. This test
-    * should have two expectations: does the menu display when
-    * clicked and does it hide when clicked again.
-    */
     $menuIcon = $('.menu-icon-link');
 
+    // checks if menu-hidden in toggled on click
     it('changes visibility on click', function() {
       $menuIcon.trigger('click');
       expect($body.hasClass('menu-hidden')).toBe(false);
@@ -56,14 +53,22 @@ $(function() {
     });
 
   });
-  /* TODO: Write a new test suite named "Initial Entries" */
 
-  /* TODO: Write a test that ensures when the loadFeed
-  * function is called and completes its work, there is at least
-  * a single .entry element within the .feed container.
-  * Remember, loadFeed() is asynchronous so this test will require
-  * the use of Jasmine's beforeEach and asynchronous done() function.
-  */
+  describe('Initial Entries', function() {
+    // loadFeed is called and completes its work
+    beforeEach(function(done) {
+      loadFeed(0, done);
+    });
+
+    // finds entries in feed and checks if there is at least 1 entry present
+    it('loadFeed function is called and has at least one entry', function(done) {
+      var $feed = $('.feed')
+      var $entries = $feed.find('.entry');
+      var entriesLen = $entries.length;
+      expect(entriesLen > 0).toBe(true);
+      done();
+    });
+  });
 
   /* TODO: Write a new test suite named "New Feed Selection"
 
