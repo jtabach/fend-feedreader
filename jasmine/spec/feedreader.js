@@ -35,10 +35,10 @@ $(function() {
   });
 
   describe('The menu', function() {
-    var body = $('body');
+    var $body = $('body');
 
     it('is hidden by default', function() {
-      expect(body.hasClass('menu-hidden')).toBe(true);
+      expect($body.hasClass('menu-hidden')).toBe(true);
     });
 
     /* TODO: Write a test that ensures the menu changes
@@ -46,7 +46,15 @@ $(function() {
     * should have two expectations: does the menu display when
     * clicked and does it hide when clicked again.
     */
-    
+    $menuIcon = $('.menu-icon-link');
+
+    it('changes visibility on click', function() {
+      $menuIcon.trigger('click');
+      expect($body.hasClass('menu-hidden')).toBe(false);
+      $menuIcon.trigger('click');
+      expect($body.hasClass('menu-hidden')).toBe(true);
+    });
+
   });
   /* TODO: Write a new test suite named "Initial Entries" */
 
