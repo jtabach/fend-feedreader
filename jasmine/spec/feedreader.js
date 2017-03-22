@@ -12,11 +12,13 @@ $(function() {
 
   describe('RSS Feeds', function() {
 
+    // checks if allFeeds is defined and has a length
     it('are defined', function() {
       expect(allFeeds).toBeDefined();
       expect(allFeeds.length).not.toBe(0);
     });
 
+    // checks that each feed has a url that is defined and not null or empty string
     it('has a url', function() {
       allFeeds.forEach(function(feed){
         expect(feed.url).toBeDefined(true);
@@ -25,6 +27,7 @@ $(function() {
       });
     });
 
+    // checks that each feed has a name that is defined and not null or empty string
     it('has a name', function() {
       allFeeds.forEach(function(feed){
         expect(feed.name).toBeDefined(true);
@@ -70,10 +73,30 @@ $(function() {
     });
   });
 
-  /* TODO: Write a new test suite named "New Feed Selection"
+  describe('New Feed Selection', function() {
 
-  /* TODO: Write a test that ensures when a new feed is loaded
-  * by the loadFeed function that the content actually changes.
-  * Remember, loadFeed() is asynchronous.
-  */
+    var firstFeedEntryText,
+        secondFeedEntryText;
+
+    beforeEach(function(done) {
+
+      // loads the first feed and gets the title from the first entry
+      loadFeed(0, function() {
+        firstFeedEntryText = $('.feed').find('.entry').first().text().trim();
+
+        // loads the second feed and gets the title from the first entry
+        loadFeed(1, function() {
+          secondFeedEntryText = $('.feed').find('.entry').first().text().trim();
+          done();
+        });
+      });
+    });
+
+    // checks to make sure the first entry of the first feed does not match the first entry of the second feed
+    it('content changes on new feed', function(done) {
+      expect(firstFeedEntryText == secondFeedEntryText).toBe(false)
+      done();
+    });
+  });
+
 }());
